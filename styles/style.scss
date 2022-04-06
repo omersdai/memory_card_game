@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+@import './utilities';
+
+$primaryColor: steelblue;
+$border: 20px solid black;
+$cardHeight: 300px;
+$cardWidth: 250px;
+$imageSize: 200px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: 'Roboto', serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: steelblue;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate 
+that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect 
+https://www.w3schools.com/howto/howto_css_flip_card.asp */
+.flip-card {
+  background-color: transparent;
+  width: $cardWidth;
+  height: $cardHeight;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
+  img {
+    width: $imageSize;
+    height: $imageSize;
+  }
+
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  &:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Position the front and back side */
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    @extend .flex-center;
+  }
+
+  .circle {
+    border-radius: 50%;
+    @extend .flex-center;
+
+    width: 50%;
+    height: 50%;
+    background-color: $black;
+  }
+
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: $green;
+    color: black;
+    transform: rotateY(180deg);
+
+    .circle {
+      width: 75%;
+      height: 75%;
+      background-color: $white;
+    }
+  }
+
+  /* Style the back side */
+  .flip-card-back {
+    background-color: rgb(146, 38, 38);
+  }
+}

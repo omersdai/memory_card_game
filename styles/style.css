@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap");
+.hide {
+  display: none !important;
+}
+
+.col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.flex-center, .flip-card .flip-card-front,
+.flip-card .flip-card-back, .flip-card .circle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.bg-pink {
+  background-color: #e4657a !important;
+}
+
+.bg-red {
+  background-color: #ff2929 !important;
+}
+
+.bg-orange {
+  background-color: #ffa600 !important;
+}
+
+.bg-yellow {
+  background-color: yellow !important;
+}
+
+.bg-green {
+  background-color: #3dd83d !important;
+}
+
+.bg-blue {
+  background-color: deepskyblue !important;
+}
+
+.bg-purple {
+  background-color: #a144ad !important;
+}
+
+.bg-dark-blue {
+  background-color: #3c3cc0 !important;
+}
+
+.bg-black {
+  background-color: #1b1b1b !important;
+}
+
+.bg-white {
+  background-color: #ececec !important;
+}
+
+.pink {
+  color: #e4657a !important;
+}
+
+.red {
+  color: #ff2929 !important;
+}
+
+.orange {
+  color: #ffa600 !important;
+}
+
+.yellow {
+  color: yellow !important;
+}
+
+.green {
+  color: #3dd83d !important;
+}
+
+.blue {
+  color: deepskyblue !important;
+}
+
+.purple {
+  color: #a144ad !important;
+}
+
+.dark-blue {
+  color: #3c3cc0 !important;
+}
+
+.black {
+  color: #1b1b1b !important;
+}
+
+.white {
+  color: #ececec !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: 'Roboto', serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: steelblue;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate 
+that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect 
+https://www.w3schools.com/howto/howto_css_flip_card.asp */
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 300px;
+  border: 1px solid #f1f1f1;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  /* Remove this if you don't want the 3D effect */
+  /* This container is needed to position the front and back side */
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  /* Position the front and back side */
+  /* Style the front side (fallback if image is missing) */
+  /* Style the back side */
+}
+
+.flip-card img {
+  width: 200px;
+  height: 200px;
+}
+
+.flip-card .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flip-card .flip-card-front,
+.flip-card .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card .circle {
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  background-color: #1b1b1b;
+}
+
+.flip-card .flip-card-front {
+  background-color: #3dd83d;
+  color: black;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flip-card .flip-card-front .circle {
+  width: 75%;
+  height: 75%;
+  background-color: #ececec;
+}
+
+.flip-card .flip-card-back {
+  background-color: #922626;
+}
+/*# sourceMappingURL=style.css.map */
