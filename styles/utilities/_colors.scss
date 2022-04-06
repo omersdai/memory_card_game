@@ -11,6 +11,7 @@ $purple: rgb(161, 68, 173);
 $darkBlue: rgb(60, 60, 192);
 $black: rgb(27, 27, 27);
 $white: rgb(236, 236, 236);
+$gray: rgb(128, 128, 128);
 
 // @include set-background($color);
 
@@ -69,6 +70,10 @@ $white: rgb(236, 236, 236);
   background-color: $white !important;
 }
 
+.bg-gray {
+  background-color: $gray !important;
+}
+
 .pink {
   color: $pink !important;
 }
@@ -107,4 +112,8 @@ $white: rgb(236, 236, 236);
 
 .white {
   color: $white !important;
+}
+
+.gray {
+  color: $gray !important;
 }

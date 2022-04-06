@@ -90,6 +90,10 @@
   background-color: #ececec !important;
 }
 
+.bg-gray {
+  background-color: gray !important;
+}
+
 .pink {
   color: #e4657a !important;
 }
@@ -130,6 +134,10 @@
   color: #ececec !important;
 }
 
+.gray {
+  color: gray !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -156,6 +164,14 @@ body {
   min-height: 100vh;
   width: 100vw;
   background-color: steelblue;
+}
+
+.game-title {
+  cursor: pointer;
+}
+
+.game-title:hover {
+  color: #ffff;
 }
 
 .game-container {
@@ -204,9 +220,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  gap: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px;
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate 
@@ -245,7 +265,7 @@ https://www.w3schools.com/howto/howto_css_flip_card.asp */
           transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card.flipped .flip-card-inner {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
