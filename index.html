@@ -12,20 +12,61 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>Insert Project Name Here</title>
+    <title>Memory Card Game</title>
   </head>
   <body>
-    <h1>Project Template</h1>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <div class="circle">
-            <img src="./pokemon pictures/pokemon_1.png" alt="bulbasaur" />
+    <h1>Memory Card Game</h1>
+    <div class="game-container">
+      <div class="game-header">
+        <select name="difficulty" id="difficulty" class="difficulty">
+          <option value="easy" selected>Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <div class="game-info">
+          <i class="fa-solid fa-circle fa-2x"></i>
+          <span class="game-text" id="cardCount">40</span>
+          <i class="fas fa-stopwatch fa-2x"></i>
+          <span class="game-text" id="clock">0:00</span>
+        </div>
+      </div>
+      <div class="game" id="game">
+        <!-- <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="circle">
+                <img src="./pokemon pictures/pokemon_1.png" alt="bulbasaur" />
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <div class="circle"></div>
+            </div>
           </div>
         </div>
-        <div class="flip-card-back">
-          <div class="circle"></div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="circle">
+                <img src="./pokemon pictures/pokemon_1.png" alt="bulbasaur" />
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <div class="circle"></div>
+            </div>
+          </div>
         </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="circle">
+                <img src="./pokemon pictures/pokemon_1.png" alt="bulbasaur" />
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
 
