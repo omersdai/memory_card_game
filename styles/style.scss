@@ -3,9 +3,9 @@
 
 $primaryColor: steelblue;
 $border: 20px solid black;
-$cardHeight: 200px;
-$cardWidth: 175px;
-$imageSize: 150px;
+// $cardHeight: 200px;
+// $cardWidth: 175px;
+// $imageSize: 150px;
 
 * {
   margin: 0;
@@ -76,15 +76,16 @@ that the flip itself goes out of the box on hover (remove perspective if you don
 https://www.w3schools.com/howto/howto_css_flip_card.asp */
 .flip-card {
   background-color: transparent;
-  width: $cardWidth;
-  height: $cardHeight;
+  // width: $cardWidth;
+  // height: $cardHeight;
+  cursor: pointer;
   // border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 
-  img {
-    width: $imageSize;
-    height: $imageSize;
-  }
+  // img {
+  //   width: $imageSize;
+  //   height: $imageSize;
+  // }
 
   /* This container is needed to position the front and back side */
   .flip-card-inner {
@@ -100,6 +101,7 @@ https://www.w3schools.com/howto/howto_css_flip_card.asp */
   /* Do an horizontal flip when you move the mouse over the flip box container */
   &.flipped .flip-card-inner {
     transform: rotateY(180deg);
+    cursor: default;
   }
 
   /* Position the front and back side */
@@ -108,8 +110,10 @@ https://www.w3schools.com/howto/howto_css_flip_card.asp */
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Safari */
+    // Firefox https://stackoverflow.com/questions/9604982/backface-visibility-not-working-properly-in-firefox-works-in-safari
+    transform: rotateX(0deg);
     @extend .flex-center;
   }
 

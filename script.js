@@ -5,8 +5,6 @@ const cardCountEl = document.getElementById('cardCount');
 const clockEl = document.getElementById('clock');
 const gameEl = document.getElementById('game');
 
-console.log(difficultyEl, cardCountEl, clockEl);
-
 const uniqueCards = [
   { id: 2, color: 'green' },
   { id: 5, color: 'red' },
@@ -30,17 +28,24 @@ const uniqueCards = [
   { id: 150, color: 'pink' },
 ];
 
-console.log(uniqueCards);
-
 const difficulties = {
   easy: {
     cardCount: 10,
+    cardHeight: '200px',
+    cardWidth: '180px',
+    imgSize: '150px',
   },
   medium: {
     cardCount: 15,
+    cardHeight: '165px',
+    cardWidth: '150px',
+    imgSize: '140px',
   },
   hard: {
     cardCount: 20,
+    cardHeight: '150px',
+    cardWidth: '125px',
+    imgSize: '100px',
   },
 };
 const tick = 1000;
@@ -59,7 +64,6 @@ let interval;
 let matchedCards; // set
 
 function initializeGame() {
-  console.log(difficultyEl.value);
   difficulty = difficulties[difficultyEl.value];
   firstCard = null;
   cardsLocked = false;
@@ -81,7 +85,6 @@ initializeGame();
 function clickCard(e) {
   const card = e.currentTarget;
   if (cardsLocked || card === firstCard || matchedCards.has(card)) return;
-  console.log(card);
 
   if (!gameStarted) {
     gameStarted = true;
@@ -156,13 +159,16 @@ function placeCards() {
 
 function createCard(id, color) {
   const card = document.createElement('div');
+  const { cardHeight, cardWidth, imgSize } = difficulty;
   card.className = 'flip-card';
+  card.style.height = cardHeight;
+  card.style.width = cardWidth;
   card.setAttribute('card-id', id);
   card.innerHTML = `
     <div class="flip-card-inner">
     <div class="flip-card-front bg-${color}">
       <div class="circle">
-        <img src="./pokemon pictures/pokemon_${id}.png" alt="pokemon_${id}" />
+        <img src="./pokemon pictures/pokemon_${id}.png" alt="pokemon_${id}" style="height: ${imgSize}; width: ${imgSize};" />
       </div>
     </div>
     <div class="flip-card-back">
