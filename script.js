@@ -1,51 +1,63 @@
 // Game elements
-const gameTitleEl = document.getElementById('gameTitle');
-const difficultyEl = document.getElementById('difficulty');
-const cardCountEl = document.getElementById('cardCount');
-const clockEl = document.getElementById('clock');
-const gameEl = document.getElementById('game');
+const gameTitleEl = document.getElementById("gameTitle");
+const difficultyEl = document.getElementById("difficulty");
+const cardCountEl = document.getElementById("cardCount");
+const clockEl = document.getElementById("clock");
+const gameEl = document.getElementById("game");
+
+const [CARD_ID, FLIPPED] = ["card-id", "flipped"];
+const [GREEN, RED, BLUE, ORANGE, YELLOW, GRAY, PINK, PURPLE] = [
+  "green",
+  "red",
+  "blue",
+  "orange",
+  "yellow",
+  "gray",
+  "pink",
+  "purple",
+];
 
 const uniqueCards = [
-  { id: 2, color: 'green' },
-  { id: 5, color: 'red' },
-  { id: 8, color: 'blue' },
-  { id: 12, color: 'orange' },
-  { id: 15, color: 'orange' },
-  { id: 25, color: 'yellow' },
-  { id: 37, color: 'red' },
-  { id: 44, color: 'green' },
-  { id: 50, color: 'gray' },
-  { id: 54, color: 'blue' },
-  { id: 65, color: 'pink' },
-  { id: 91, color: 'blue' },
-  { id: 94, color: 'purple' },
-  { id: 95, color: 'gray' },
-  { id: 103, color: 'green' },
-  { id: 125, color: 'yellow' },
-  { id: 126, color: 'red' },
-  { id: 127, color: 'orange' },
-  { id: 143, color: 'gray' },
-  { id: 150, color: 'pink' },
+  { id: 2, color: GREEN },
+  { id: 5, color: RED },
+  { id: 8, color: BLUE },
+  { id: 12, color: ORANGE },
+  { id: 15, color: ORANGE },
+  { id: 25, color: YELLOW },
+  { id: 37, color: RED },
+  { id: 44, color: GREEN },
+  { id: 50, color: GRAY },
+  { id: 54, color: BLUE },
+  { id: 65, color: PINK },
+  { id: 91, color: BLUE },
+  { id: 94, color: PURPLE },
+  { id: 95, color: GRAY },
+  { id: 103, color: GREEN },
+  { id: 125, color: YELLOW },
+  { id: 126, color: RED },
+  { id: 127, color: ORANGE },
+  { id: 143, color: GRAY },
+  { id: 150, color: PINK },
 ];
 
 const difficulties = {
   easy: {
     cardCount: 10,
-    cardHeight: '200px',
-    cardWidth: '180px',
-    imgSize: '150px',
+    cardHeight: "200px",
+    cardWidth: "180px",
+    imgSize: "150px",
   },
   medium: {
     cardCount: 15,
-    cardHeight: '165px',
-    cardWidth: '150px',
-    imgSize: '140px',
+    cardHeight: "165px",
+    cardWidth: "150px",
+    imgSize: "140px",
   },
   hard: {
     cardCount: 20,
-    cardHeight: '150px',
-    cardWidth: '125px',
-    imgSize: '100px',
+    cardHeight: "150px",
+    cardWidth: "125px",
+    imgSize: "100px",
   },
 };
 const tick = 1000;
@@ -63,6 +75,8 @@ let time;
 let interval;
 let matchedCards; // set
 
+initializeGame();
+
 function initializeGame() {
   difficulty = difficulties[difficultyEl.value];
   firstCard = null;
@@ -75,27 +89,20 @@ function initializeGame() {
   matchedCards = new Set();
 
   cardCountEl.innerText = cardCount;
-  clockEl.innerText = '0:00';
+  clockEl.innerText = "0:00";
 
   placeCards();
 }
-
-initializeGame();
 
 function clickCard(e) {
   const card = e.currentTarget;
   if (cardsLocked || card === firstCard || matchedCards.has(card)) return;
 
-  if (!gameStarted) {
-    gameStarted = true;
-    startGame();
-  }
+  if (!gameStarted) startGame();
 
   if (!firstCard) {
     firstCard = card;
-  } else if (
-    firstCard.getAttribute('card-id') === card.getAttribute('card-id')
-  ) {
+  } else if (firstCard.getAttribute(CARD_ID) === card.getAttribute(CARD_ID)) {
     matchedCards.add(firstCard);
     matchedCards.add(card);
     firstCard = null;
@@ -105,17 +112,17 @@ function clickCard(e) {
     cardsLocked = true;
     setTimeout(() => {
       cardsLocked = false;
-      firstCard.classList.remove('flipped');
-      card.classList.remove('flipped');
+      firstCard.classList.remove(FLIPPED);
+      card.classList.remove(FLIPPED);
       firstCard = null;
     }, flipDelay);
   }
 
-  card.classList.add('flipped');
+  card.classList.add(FLIPPED);
 }
 
 function startGame() {
-  //activate clock
+  gameStarted = true;
   interval = setInterval(updateClock, tick);
 }
 
@@ -127,11 +134,11 @@ function updateClock() {
   time += tick;
   const seconds = parseInt(time / 1000) % 60;
   const minutes = parseInt(time / (1000 * 60));
-  clockEl.innerText = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+  clockEl.innerText = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
 }
 
 function placeCards() {
-  gameEl.innerHTML = ''; // Clear previous cards
+  gameEl.innerHTML = ""; // Clear previous cards
   const temp = [];
   for (let i = 0; i < cardCount; i++) {
     const { id, color } = uniqueCards[i];
@@ -152,23 +159,23 @@ function placeCards() {
   console.log(cards);
 
   cards.forEach((card) => {
-    card.addEventListener('click', clickCard);
+    card.addEventListener("click", clickCard);
     gameEl.appendChild(card);
   });
 }
 
 function createCard(id, color) {
-  const card = document.createElement('div');
+  const card = document.createElement("div");
   const { cardHeight, cardWidth, imgSize } = difficulty;
-  card.className = 'flip-card';
+  card.className = "flip-card";
   card.style.height = cardHeight;
   card.style.width = cardWidth;
-  card.setAttribute('card-id', id);
+  card.setAttribute(CARD_ID, id);
   card.innerHTML = `
     <div class="flip-card-inner">
     <div class="flip-card-front bg-${color}">
       <div class="circle">
-        <img src="./pokemon pictures/pokemon_${id}.png" alt="pokemon_${id}" style="height: ${imgSize}; width: ${imgSize};" />
+        <img src="./pokemon pictures/pokemon_${id}.png" alt="pokemon_${id}" style="height: ${imgSize}; width: ${imgSize};"/>
       </div>
     </div>
     <div class="flip-card-back">
@@ -180,5 +187,6 @@ function createCard(id, color) {
   return card;
 }
 
-gameTitleEl.addEventListener('click', initializeGame); // change difficulty and reset game
-difficultyEl.addEventListener('change', initializeGame);
+document.addEventListener("dragstart", (e) => e.preventDefault()); // prevent dragging ghost images of cards
+gameTitleEl.addEventListener("click", initializeGame); // change difficulty and reset game
+difficultyEl.addEventListener("change", initializeGame);

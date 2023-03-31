@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
-@import './utilities';
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap");
+@import "./utilities";
 
 $primaryColor: steelblue;
 $border: 20px solid black;
@@ -15,7 +15,7 @@ $border: 20px solid black;
 }
 
 body {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +23,12 @@ body {
   min-height: 100vh;
   width: 100vw;
   background-color: steelblue;
+}
+
+img {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .game-title {
